@@ -16,25 +16,27 @@
   <!-- ===== GOOGLE FONTS ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* ===== EMERALD & GOLD COLOR PALETTE ===== */
+    /* ===== DARK & PINK COLOR PALETTE ===== */
     :root {
-      --bg-dark: #0a1f1a;
-      --bg-card: #1a3d32;
-      --bg-card-hover: #255244;
-      --bg-info: #0f2d26;
-      --bg-info-dark: #0a1f1a;
+      --bg-dark: #050a08;
+      --bg-card: #0f1f1a;
+      --bg-card-hover: #1a3d32;
+      --bg-info: #0a1512;
+      --bg-info-dark: #050a08;
       --accent-emerald: #10b981;
       --accent-emerald-dark: #059669;
       --accent-gold: #d4af37;
       --accent-gold-light: #f4d06f;
-      --accent-glow: rgba(16, 185, 129, 0.3);
+      --accent-pink: #ec4899;
+      --accent-pink-light: #f472b6;
+      --accent-glow: rgba(236, 72, 153, 0.3);
       --text-main: #ffffff;
-      --text-muted: #a8c4bc;
+      --text-muted: #8fa39e;
       --success: #10b981;
-      --shadow-emerald: 0 10px 50px rgba(16, 185, 129, 0.25);
+      --shadow-pink: 0 10px 50px rgba(236, 72, 153, 0.3);
       --radius: 16px;
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Inter', sans-serif;
@@ -44,7 +46,7 @@
     
     body {
       font-family: var(--font-body);
-      background: radial-gradient(ellipse at top, #1a3d32 0%, #0a1f1a 100%);
+      background: radial-gradient(ellipse at top, #0f1f1a 0%, #050a08 100%);
       color: var(--text-main);
       min-height: 100vh;
       padding-bottom: 60px;
@@ -53,7 +55,7 @@
     /* ===== HERO SECTION ===== */
     .hero {
       text-align: center;
-      padding: 70px 20px 35px;
+      padding: 70px 20px 25px;
       position: relative;
     }
     
@@ -83,7 +85,7 @@
     .hero-subtitle {
       font-size: 1.1rem;
       color: var(--text-muted);
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       font-weight: 400;
     }
     
@@ -107,29 +109,8 @@
     
     .hero-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(16, 185, 129, 0.5);
+      box-shadow: 0 12px 40px rgba(236, 72, 153, 0.5);
       border-color: var(--accent-gold-light);
-    }
-
-    /* ===== TRUST BADGES ===== */
-    .trust-badges {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin: 35px 0 25px;
-      flex-wrap: wrap;
-    }
-    
-    .trust-badge {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      background: rgba(16, 185, 129, 0.1);
-      padding: 8px 16px;
-      border-radius: 25px;
-      border: 1px solid rgba(16, 185, 129, 0.2);
     }
 
     /* ===== PROFILES GRID ===== */
@@ -141,10 +122,10 @@
     
     .section-title {
       text-align: center;
-      font-family: var(--font-heading);
+      font-family: var(--font-body);
       font-size: 2rem;
-      font-weight: 700;
-      margin: 40px 0 40px;
+      font-weight: 800;
+      margin: 15px 0 35px;
       color: var(--accent-gold);
       letter-spacing: -0.5px;
       position: relative;
@@ -154,7 +135,7 @@
       content: '◆ ◆ ◆';
       display: block;
       font-size: 0.8rem;
-      color: var(--accent-emerald);
+      color: var(--accent-pink);
       margin-top: 10px;
       letter-spacing: 5px;
     }
@@ -173,8 +154,8 @@
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
-      border: 1px solid rgba(16, 185, 129, 0.2);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(236, 72, 153, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
     
     .profile-card::before {
@@ -195,15 +176,15 @@
     /* ===== УВЕЛИЧЕНИЕ КАРТОЧКИ ПРИ НАВЕДЕНИИ ===== */
     .profile-card:hover {
       transform: translateY(-8px) scale(1.02);
-      box-shadow: var(--shadow-emerald);
-      border-color: var(--accent-emerald);
+      box-shadow: var(--shadow-pink);
+      border-color: var(--accent-pink);
     }
     
     .profile-img-container {
       position: relative;
       z-index: 1;
       overflow: hidden;
-      background: linear-gradient(135deg, #1a3d32, #255244);
+      background: linear-gradient(135deg, #0f1f1a, #1a3d32);
     }
     
     /* ===== ПЛАВНАЯ ЗАГРУЗКА КАРТИНОК ===== */
@@ -228,7 +209,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(135deg, #1a3d32, #255244, #1a3d32);
+      background: linear-gradient(135deg, #0f1f1a, #1a3d32, #0f1f1a);
       background-size: 200% 200%;
       animation: shimmer 1.5s ease-in-out infinite;
     }
@@ -281,8 +262,8 @@
     }
     
     .profile-name {
-      font-family: var(--font-heading);
-      font-weight: 700;
+      font-family: var(--font-body);
+      font-weight: 800;
       font-size: 1.5rem;
       color: var(--accent-gold);
       margin-bottom: 8px;
@@ -293,14 +274,14 @@
       color: var(--text-muted);
       font-size: 0.95rem;
       margin-bottom: 18px;
-      font-weight: 500;
+      font-weight: 600;
     }
     
     .profile-btn {
       display: inline-block;
       padding: 14px 40px;
       background: linear-gradient(135deg, var(--accent-gold), #b8941f);
-      color: #0a1f1a;
+      color: #050a08;
       font-weight: 700;
       font-size: 0.95rem;
       border: none;
@@ -323,7 +304,7 @@
     /* ===== MORE PROFILES BUTTON ===== */
     .more-profiles {
       text-align: center;
-      margin: 55px 0 30px;
+      margin: 45px 0 25px;
     }
     
     .more-btn {
@@ -352,17 +333,17 @@
     /* ===== TRUST BADGE ===== */
     .trust-section {
       text-align: center;
-      padding: 20px 20px 5px;
+      padding: 15px 20px 5px;
       color: var(--text-muted);
       font-size: 0.85rem;
-      margin-top: 15px;
+      margin-top: 10px;
       margin-bottom: 0;
     }
 
     /* ===== TESTIMONIALS ===== */
     .testimonials-section {
       padding: 20px 20px 60px;
-      background: linear-gradient(180deg, transparent, rgba(16, 185, 129, 0.05), transparent);
+      background: linear-gradient(180deg, transparent, rgba(236, 72, 153, 0.05), transparent);
     }
     
     .testimonials-grid {
@@ -376,9 +357,9 @@
       background: var(--bg-card);
       border-radius: var(--radius);
       padding: 30px;
-      border: 1px solid rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(236, 72, 153, 0.2);
       transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
       position: relative;
     }
     
@@ -395,9 +376,9 @@
     }
     
     .testimonial-card:hover {
-      border-color: var(--accent-emerald);
+      border-color: var(--accent-pink);
       transform: translateY(-5px);
-      box-shadow: var(--shadow-emerald);
+      box-shadow: var(--shadow-pink);
     }
     
     .testimonial-header {
@@ -428,7 +409,7 @@
     .testimonial-user { flex: 1; }
     
     .testimonial-name {
-      font-family: var(--font-heading);
+      font-family: var(--font-body);
       font-weight: 700;
       font-size: 1.1rem;
       color: var(--accent-gold);
@@ -438,6 +419,7 @@
     .testimonial-meta {
       color: var(--text-muted);
       font-size: 0.85rem;
+      font-weight: 600;
     }
     
     .stars {
@@ -490,7 +472,7 @@
     }
     
     .modal-content {
-      background: linear-gradient(135deg, var(--bg-card), #1a3d32);
+      background: linear-gradient(135deg, var(--bg-card), #0f1f1a);
       border-radius: var(--radius);
       padding: 40px 35px;
       max-width: 450px;
@@ -523,7 +505,7 @@
     }
     
     .modal h3 {
-      font-family: var(--font-heading);
+      font-family: var(--font-body);
       font-size: 1.6rem;
       font-weight: 700;
       margin-bottom: 15px;
@@ -556,19 +538,42 @@
     }
     
     .modal-btn:hover {
-      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.6);
+      box-shadow: 0 8px 30px rgba(236, 72, 153, 0.6);
       transform: translateY(-2px);
+    }
+
+    /* ===== TRUST BADGES FOOTER ===== */
+    .trust-badges-footer {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 50px 0 30px;
+      flex-wrap: wrap;
+      padding: 0 20px;
+    }
+    
+    .trust-badge-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      background: rgba(236, 72, 153, 0.1);
+      padding: 12px 20px;
+      border-radius: 30px;
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      font-weight: 600;
     }
 
     /* ===== FOOTER ===== */
     footer {
       text-align: center;
-      padding: 40px 20px 50px;
+      padding: 30px 20px 40px;
       color: var(--text-muted);
       font-size: 0.75rem;
       line-height: 1.6;
-      border-top: 1px solid rgba(16, 185, 129, 0.2);
-      margin-top: 50px;
+      border-top: 1px solid rgba(236, 72, 153, 0.2);
+      margin-top: 40px;
     }
     
     footer a {
@@ -578,14 +583,6 @@
     }
     
     footer a:hover { text-decoration: underline; }
-    
-    .disclaimer {
-      margin-top: 15px;
-      opacity: 0.6;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
 
     /* ===== MOBILE ===== */
     @media (max-width: 1024px) {
@@ -604,7 +601,7 @@
       .profile-img { height: 480px; }
       .hero h1 { font-size: 2.2rem; }
       .hero-btn { padding: 16px 45px; font-size: 1.05rem; }
-      .trust-badges { flex-direction: column; gap: 10px; }
+      .trust-badges-footer { flex-direction: column; gap: 12px; }
     }
     
     @media (max-width: 480px) {
@@ -621,19 +618,11 @@
     <h1>LiebesFunke</h1>
     <p class="hero-subtitle">Dein Funke des Glücks wartet auf dich</p>
     <a href="#profiles" class="hero-btn" id="mainCta">Jetzt starten</a>
-    
-    <!-- ===== TRUST BADGES ===== -->
-    <div class="trust-badges">
-      <div class="trust-badge">🔒 SSL-verschlüsselt</div>
-      <div class="trust-badge">💯 100% Diskret</div>
-      <div class="trust-badge">✅ Keine versteckten Kosten</div>
-      <div class="trust-badge">⭐ 4.9/5 Bewertungen</div>
-    </div>
   </section>
 
   <!-- ===== PROFILES ===== -->
   <div class="container" id="profiles">
-    <h2 class="section-title">Besondere Frauen heute</h2>
+    <h2 class="section-title">Beste Profile</h2>
     
     <div class="profiles-grid" id="profilesGrid">
       <!-- Profile werden per JavaScript hinzugefügt -->
@@ -703,6 +692,14 @@
     </div>
   </section>
 
+  <!-- ===== TRUST BADGES FOOTER ===== -->
+  <div class="trust-badges-footer">
+    <div class="trust-badge-footer">🔒 SSL-verschlüsselt</div>
+    <div class="trust-badge-footer">💯 100% Diskret</div>
+    <div class="trust-badge-footer">✅ Keine versteckten Kosten</div>
+    <div class="trust-badge-footer">⭐ 4.9/5 Bewertungen</div>
+  </div>
+
   <!-- ===== MODAL ===== -->
   <div class="modal" id="confirmModal">
     <div class="modal-content">
@@ -719,10 +716,6 @@
       <a href="/privacy.html">Datenschutz</a> • 
       <a href="/terms.html">Impressum</a> • 
       <a href="/disclaimer.html">AGB</a>
-    </div>
-    <div class="disclaimer">
-      Dies ist eine Werbeseite. Wir garantieren keine Partnerschaften. 
-      Alle Profile sind fiktiv und dienen Demonstrationszwecken.
     </div>
     <div style="margin-top:10px; opacity:0.5">
       © 2024 LiebesFunke. Alle Rechte vorbehalten.
