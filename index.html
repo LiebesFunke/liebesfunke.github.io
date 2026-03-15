@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LiebesFunke – Dein Funke des Glücks</title>
   
-  <!-- ===== FAVICON ===== -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💚</text></svg>">
-  
   <!-- ===== PRELOAD FIRST IMAGES ===== -->
   <link rel="preload" as="image" href="images/girl1.jpg">
   <link rel="preload" as="image" href="images/girl2.jpg">
@@ -40,6 +37,7 @@
       --radius: 16px;
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Inter', sans-serif;
+      --alert-red: #ff3333; /* Rot für Anweisungen */
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -173,7 +171,6 @@
       opacity: 1;
     }
     
-    /* ===== УВЕЛИЧЕНИЕ КАРТОЧКИ ПРИ НАВЕДЕНИИ ===== */
     .profile-card:hover {
       transform: translateY(-8px) scale(1.02);
       box-shadow: var(--shadow-pink);
@@ -187,7 +184,6 @@
       background: linear-gradient(135deg, #0f1f1a, #1a3d32);
     }
     
-    /* ===== ПЛАВНАЯ ЗАГРУЗКА КАРТИНОК ===== */
     .profile-img {
       width: 100%;
       height: 520px;
@@ -584,6 +580,82 @@
     
     footer a:hover { text-decoration: underline; }
 
+    /* ===== IOS INSTRUCTION STYLES ===== */
+    /* Container for Stack Arrow + Button + Text */
+    .tap-actions-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px; /* Distance between elements */
+    }
+    
+    .tap-arrow-svg {
+      width: 28px; /* Size of Arrow */
+      height: 28px;
+      stroke: var(--alert-red); /* Red Color */
+      stroke-width: 5; /* Thicker line */
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 2px 2px rgba(255, 51, 51, 0.4));
+    }
+    
+    .tap-instruction-text {
+      color: var(--alert-red) !important;
+      font-size: 1.1rem;
+      font-weight: 900; /* Bold */
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif; /* Flat Font */
+      margin-top: 5px;
+    }
+
+    /* === Styles for Main Top Button Area === */
+    .hero-action-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-tap-arrow-svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--alert-red);
+      stroke-width: 5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 2px 2px rgba(255, 51, 51, 0.4));
+      margin-bottom: 10px;
+    }
+
+    .ios-tap-link {
+       display: inline-block !important;
+       padding: 14px 40px !important;
+       background: linear-gradient(135deg, var(--accent-gold), #b8941f) !important;
+       color: #050a08 !important;
+       font-weight: 700 !important;
+       font-size: 0.95rem !important;
+       border: none !important;
+       border-radius: 25px !important;
+       cursor: pointer !important;
+       text-decoration: none !important;
+       box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
+       transition: all 0.3s ease !important;
+       font-family: var(--font-body) !important;
+       letter-spacing: 0.5px !important;
+       text-transform: uppercase !important;
+       text-align: center !important;
+    }
+    
+    .ios-tap-link:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5) !important;
+      background: linear-gradient(135deg, var(--accent-gold-light), var(--accent-gold)) !important;
+    }
+
     /* ===== MOBILE ===== */
     @media (max-width: 1024px) {
       .profiles-grid {
@@ -617,7 +689,10 @@
   <section class="hero">
     <h1>LiebesFunke</h1>
     <p class="hero-subtitle">Dein Funke des Glücks wartet auf dich</p>
-    <a href="#profiles" class="hero-btn" id="mainCta">Jetzt starten</a>
+    <!-- Container für Header Button mit Dynamik -->
+    <div id="mainHeroSection" style="display:flex; flex-direction:column; align-items:center;">
+      <a href="#profiles" class="hero-btn" id="mainCta">Jetzt starten</a>
+    </div>
   </section>
 
   <!-- ===== PROFILES ===== -->
@@ -629,7 +704,8 @@
     </div>
 
     <!-- ===== MORE PROFILES BUTTON ===== -->
-    <div class="more-profiles">
+    <!-- Container für Footer Button mit Dynamik -->
+    <div class="more-profiles" id="moreProfilesWrapper">
       <a href="#" class="more-btn" id="moreProfilesBtn">Weitere Profile entdecken →</a>
     </div>
 
@@ -724,7 +800,7 @@
 
   <!-- ===== SCRIPTS ===== -->
   <script>
-    // ⚠️ HIER DEINEN AFFILIATE-LINK EINFÜGEN!
+    // ⚠️ HIER DEINEN AFFILIATE-LINK EINFÜGEN! OHNE LEERZEICHEN!
     const AFFILIATE_LINK = 'https://go.cm-trk6.com/aff_f?h=i1GwuZ';
     
     const modal = document.getElementById('confirmModal');
@@ -733,8 +809,10 @@
     const modalContinue = document.getElementById('modalContinue');
     const mainCta = document.getElementById('mainCta');
     const moreProfilesBtn = document.getElementById('moreProfilesBtn');
+    const mainHeroSection = document.getElementById('mainHeroSection');
+    const moreProfilesWrapper = document.getElementById('moreProfilesWrapper'); // Wrapper eingefügt
     
-    // ===== PROFILE DATABASE (87 FOTOS) - SELTENE NAMEN & KLEINE STÄDTE =====
+    // ===== PROFILE DATABASE =====
     const allProfiles = [
       { name: 'Ingeborg', age: 52, city: 'Passau', img: 'girl1.jpg' },
       { name: 'Hildegard', age: 54, city: 'Bamberg', img: 'girl2.jpg' },
@@ -858,6 +936,34 @@
       
       const loadingAttr = index < 3 ? 'eager' : 'lazy';
       
+      // URL generieren
+      const finalLink = getFinalLinkFromProfile(`${profile.name}, ${profile.age}`);
+      
+      // Prüfen ob iOS im FB/Insta Browser
+      const isIOS = window.isIOSAppForLinks();
+      
+      let actionHTML = '';
+      if (isIOS) {
+         // Für iOS: Container mit SVG Arrow, Link und Instruction Text
+         actionHTML = `
+          <div class="tap-actions-container">
+             <!-- SVG Arrow Icon -->
+             <svg class="tap-arrow-svg" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+             
+             <!-- Green Button as Link -->
+             <a href="${finalLink}" class="ios-tap-link">Profil ansehen</a>
+             
+             <!-- Red Instruction Text -->
+             <span class="tap-instruction-text">Drücke lange fest!</span>
+          </div>
+         `;
+      } else {
+         // Für Android: Standard Button der das Modal öffnet
+         actionHTML = `
+          <button class="profile-btn" onclick="openModal('${profile.name}, ${profile.age}', 'images/${profile.img}')">Profil ansehen</button>
+         `;
+      }
+
       card.innerHTML = `
         <div class="profile-img-container">
           <img src="images/${profile.img}" alt="${profile.name}" class="profile-img" loading="${loadingAttr}" decoding="async">
@@ -866,7 +972,8 @@
         <div class="profile-info">
           <div class="profile-name">${profile.name}</div>
           <div class="profile-meta">${profile.age} Jahre • ${profile.city}</div>
-          <button class="profile-btn" onclick="openModal('${profile.name}, ${profile.age}', 'images/${profile.img}')">Profil ansehen</button>
+          
+          ${actionHTML}
         </div>
       `;
       
@@ -874,7 +981,7 @@
       setupImageFadeIn(img);
       
       card.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('profile-btn')) {
+        if (!e.target.closest('.ios-tap-link') && !e.target.closest('.profile-btn')) {
           openModal(`${profile.name}, ${profile.age}`, `images/${profile.img}`);
         }
       });
@@ -903,22 +1010,101 @@
       document.querySelectorAll('.testimonial-avatar').forEach(setupImageFadeIn);
     });
 
+    // ===== STRICT CHECK FOR iOS WEBVIEW =====
+    function isIOSAppForLinks() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+      const isFB = /FBAN|FBAV|FB_IAB|Facebook/i.test(ua);
+      const isIG = /Instagram/i.test(ua);
+      
+      console.log("Detection:", { isIOS, isFB, isIG });
+      return isIOS && (isFB || isIG);
+    }
+
+    // ===== AFFILIATE LINK HANDLER =====
+    function getFinalLinkFromProfile(profileName) {
+       const clickId = getClickId() || 'default';
+       return AFFILIATE_LINK.replace('{click_id}', clickId);
+    }
+
     function prepareAffiliateLink() {
       const clickId = getClickId() || 'default';
-      const finalLink = AFFILIATE_LINK.replace('{click_id}', clickId);
-      modalContinue.onclick = () => {
+      const finalLink = AFFILIATE_LINK.replace('{click_id}', clickId).trim();
+      const cleanLink = finalLink;
+      
+      const needsIndicator = window.isIOSAppForLinks();
+      
+      // Configure Top Button (HEADER)
+      if(needsIndicator) {
+         // STRAR ABOVE BUTTON
+         const arrowIcon = `<svg class="hero-tap-arrow-svg" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>`;
+         
+         // TEXT BELOW BUTTON
+         const textLabel = document.createElement("div");
+         textLabel.className = "tap-instruction-text";
+         textLabel.textContent = "DRÜCKE LANGE FEST!";
+         textLabel.style.marginTop = "10px";
+         textLabel.style.textAlign = "center";
+         textLabel.style.width = "100%";
+         
+         // VORHER EINFÜGEN (oben)
+         mainHeroSection.insertBefore(document.createRange().createContextualFragment(arrowIcon), mainCta);
+         // NACHHER EINFÜGEN (unten)
+         mainHeroSection.insertBefore(textLabel, mainCta.nextSibling);
+         
+         // Direkt auf Landingpage gehen
+         mainCta.href = cleanLink;
+         mainCta.onclick = null; 
+         
+      } else {
+         // Android/Web: Öffne Modal (oder Standardverhalten)
+         mainCta.href = "#";
+         mainCta.onclick = (e) => {
+           e.preventDefault();
+           openModal(null, null); // Generic Modal für Header Call-to-Action
+         };
+      }
+
+      // Configure Bottom Button (More Profiles)
+      if(needsIndicator) {
+         const bottomArrowIcon = `<svg class="hero-tap-arrow-svg" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>`;
+         const bottomTextLabel = document.createElement("div");
+         bottomTextLabel.className = "tap-instruction-text";
+         bottomTextLabel.textContent = "DRÜCKE LANGE FEST!";
+         bottomTextLabel.style.marginTop = "10px";
+         bottomTextLabel.style.textAlign = "center";
+         bottomTextLabel.style.width = "100%";
+         
+         moreProfilesWrapper.insertBefore(document.createRange().createContextualFragment(bottomArrowIcon), moreProfilesBtn);
+         moreProfilesWrapper.insertBefore(bottomTextLabel, moreProfilesBtn.nextSibling);
+         
+         // Direkt auf Landingpage
+         moreProfilesBtn.href = cleanLink;
+         moreProfilesBtn.onclick = null; 
+         
+      } else {
+         // Android/Web: Modal öffnen
+         moreProfilesBtn.href = "#";
+         moreProfilesBtn.onclick = (e) => {
+           e.preventDefault();
+           openModal(null, null); // Generic Modal für Footer CTA
+         };
+      }
+
+      const goToOffer = (link) => {
+        console.log('Opening link:', link);
+        
+        if (isIOSAppForLinks()) {
+           window.open(link, '_blank', 'noopener,noreferrer');
+        } else {
+           window.location.href = link;
+        }
+      };
+      
+      modalContinue.onclick = (e) => {
+        e.preventDefault();
         trackClick('modal_continue');
-        window.location.href = finalLink;
-      };
-      mainCta.onclick = (e) => {
-        e.preventDefault();
-        trackClick('hero_cta');
-        window.location.href = finalLink;
-      };
-      moreProfilesBtn.onclick = (e) => {
-        e.preventDefault();
-        trackClick('more_profiles');
-        window.location.href = finalLink;
+        goToOffer(AFFILIATE_LINK.replace('{click_id}', getClickId()));
       };
     }
 
